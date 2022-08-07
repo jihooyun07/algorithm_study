@@ -2,25 +2,18 @@
 
 #include<stdio.h>
 
-int a[1005], b[1005], y, k,flag[1005];
+int a[1005], b[1005], y, k;
 
 bool chk(int mid, int target){
     int cnt = 1, p = b[0];
     // b[i]가 p에서 시작한 색종이범위에 들어가는지 확인
     // 안들어가면 개수 늘리고, p 재설정
-    for(int j=0;j<k;j++)
+    for(int i=0;i<k;i++)
     {
-        for (int i=0;i<k;++i)
-        {
-            if(p<=b[i] && b[i]<p+mid)   flag[i]=1;
-        }
-        for(int i=0;i<k;i++)
-        {
-            if(flag[i]==1)   continue;
-            else{
-                p=b[i];
-                cnt++;
-            }
+        if(p<=b[i] && b[i]<p+mid)   continue;
+        else{
+            p=b[i];
+            cnt++;
         }
     }
     return cnt <= target;
@@ -40,12 +33,24 @@ int binarysearch(int low, int high, int target)
 
 int main()
 {
-	int x, n, i, max = -1;
+	int x, n, i, j, max = -1, tmp;
 	scanf("%d %d", &x, &y);
 	scanf("%d", &n);
 	scanf("%d", &k);
 	for (i = 0; i < k; i++)
 		scanf("%d %d", &a[i], &b[i]);
+    for(i=0;i<k;i++)
+    {
+        for(j=0;j<k-1;j++)
+        {
+            if(b[j]>b[j+1])
+            {
+                tmp=b[j];
+                b[j]=b[j+1];
+                b[j+1]=tmp;
+            }
+        }
+    }
 	for (i = 0; i < k; i++){
 		if (a[i] > max)	max = a[i];
 	}
