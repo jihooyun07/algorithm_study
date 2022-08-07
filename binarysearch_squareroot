@@ -6,9 +6,9 @@ int binarysearch(long long int low, long long int high, long long int target)
 	while (low <= high)
 	{
 		mid = (low + high) / 2;
-		if (mid * mid <= target && (mid + 1) * (mid + 1) > target)	return mid;
-		if (mid * mid > target)	high = mid - 1;
-		if (mid * mid < target)	low = mid + 1;
+		if (mid <= target / mid && mid + 1 > target / (mid + 1))	return mid;
+		if (mid > target/mid)	high = mid - 1;
+		if (mid < target/mid)	low = mid + 1;
 	}
 	return -1;
 }
@@ -17,5 +17,5 @@ int main()
 {
 	long long int n,i;
 	scanf("%lld", &n);
-	printf("%lld", binarysearch(0, 3037000500, n));
+	printf("%lld", binarysearch(0, 3037000499, n));
 }
