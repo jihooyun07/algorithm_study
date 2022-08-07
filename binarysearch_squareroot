@@ -1,3 +1,6 @@
+// 임의의 정수 N이 주어졌을 때 N의 양의 제곱근의 정수부분을 출력하는 프로그램을 작성하라.
+// http://jungol.co.kr/bbs/board.php?bo_table=pbank&code=1240&sca=3010
+
 #include<stdio.h>
 
 int binarysearch(long long int low, long long int high, long long int target)
