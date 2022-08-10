@@ -1,0 +1,43 @@
+//http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=4300&sca=30
+
+#include<stdio.h>
+
+int a[305],n;
+
+int binarysearch(int low, int high, int target)
+{
+    int mid;
+    while(low<=high)
+    {
+        int cnt=1;
+        mid=(low+high)/2;
+        int b[305]={0};
+        for(int i=0;i<n;i++)
+        {
+            b[cnt]+=a[i];
+            if(b[cnt]>mid)
+            {
+                b[cnt]-=a[i];
+                cnt++;
+                b[cnt]+=a[i];
+            }
+        }
+        if(cnt<=target)  high=mid-1;
+        else    low=mid+1;
+    }
+    return low;
+}
+
+int main()
+{
+    int m,i,max=-1,sum=0;
+    scanf("%d %d",&n,&m);
+    for(i=0;i<n;i++)
+        scanf("%d",&a[i]);
+        for(i=0;i<n;i++)
+        {
+            if(a[i]>max) max=a[i];
+            sum+=a[i];
+        }
+    printf("%d",binarysearch(max,sum,m));
+}
