@@ -1,0 +1,41 @@
+//문제 : N개의 정수를 입력받아 퀵소트의 단계별 결과를 출력하는 프로그램을 작성하시오. ( 10 <= N <= 1,000)
+//각 단계별로 분할 이후 배열 전체의 모습을 행으로 구분하여 출력한다.
+//http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=2858&sca=30
+
+#include<stdio.h>
+
+int a[10005],n;
+
+void quicksort(int low, int high)
+{
+	if (low >= high)	return;
+	int pivot = a[high];
+	int i = low - 1;
+	int j;
+	for (j = low; j < high; j++) {
+		if (a[j] < pivot) {
+			++i;
+			int tmp = a[i];
+			a[i] = a[j];
+			a[j] = tmp;
+		}
+	}
+	++i;
+	int tmp = a[i];
+	a[i] = a[high];
+	a[high] = tmp;
+	for (j = 0; j < n; j++)
+		printf("%d ", a[j]);
+	printf("\n");
+	quicksort(low, i - 1);
+	quicksort(i + 1, high);
+}
+
+int main()
+{
+	int i;
+	scanf("%d", &n);
+	for (i = 0; i < n; i++)
+		scanf("%d", &a[i]);
+	quicksort(0, n-1);
+}
