@@ -1,0 +1,39 @@
+//문제 : N개의 정수를 입력받아 합병정렬의 매 과정에서 복사 단계 이후 A[]의 상태를 행단위로 출력하는 프로그램을 작성하시오.
+//http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=2859&sca=30
+
+#include<stdio.h>
+
+int arr[1005], trr[1005],n;
+
+void mergesort(int low, int high)
+{
+	if (low >= high)	return;
+
+	int mid = (low + high) / 2;
+	mergesort(low, mid);
+	mergesort(mid + 1, high);
+
+	int i = low, j = mid + 1, k;
+	for (k = low; k <= high; k++)
+	{
+		if (j > high)	trr[k] = arr[i++];
+		else if (i > mid)	trr[k] = arr[j++];
+		else if (arr[i] <= arr[j])	trr[k] = arr[i++];
+		else trr[k] = arr[j++];
+	}
+	for (i = low; i <= high; i++)
+		arr[i] = trr[i];
+	for (k = 0; k < n; k++)
+		printf("%d ", arr[k]);
+	printf("\n");
+}
+
+
+int main()
+{
+	int i;
+	scanf("%d", &n);
+	for (i = 0; i < n; i++)
+		scanf("%d", &arr[i]);
+	mergesort(0, n - 1);
+}
