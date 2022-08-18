@@ -1,0 +1,25 @@
+//문제 : 크기가 N인 배열을 입력받아서 특정 구간을 정렬한 후, 출력하고, 다시 전체를 정렬한 후 출력하는 프로그램을 작성하시오.
+//http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=3882&sca=30
+
+#include<stdio.h>
+#include<algorithm>
+using namespace std;
+
+int arr[100005];
+
+int main()
+{
+	int n, i, s, e;
+	scanf("%d", &n);
+	for (i = 0; i < n; i++)
+		scanf("%d", &arr[i]);
+	scanf("%d %d", &s, &e);
+	sort(arr + s, arr + e + 1);
+	for (i = 0; i < n; i++)
+		printf("%d ", arr[i]);
+	printf("\n");
+	sort(arr, arr + n);
+	for (i = 0; i < n; i++)
+		printf("%d ", arr[i]);
+	printf("\n");
+}
