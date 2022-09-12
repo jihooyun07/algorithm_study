@@ -1,0 +1,24 @@
+// 문제 : http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=4000&sca=30
+
+#include<stdio.h>
+
+struct Rectangle
+{
+	int width, height;
+	bool operator<(Rectangle right)
+	{
+		return width * height < right.width* right.height;
+	}
+};
+
+int main()
+{
+	Rectangle a, b;
+	scanf("%d %d", &a.width, &a.height);
+	scanf("%d %d", &b.width, &b.height);
+
+	if (a < b)	printf("a is smaller\n");
+	else printf("b is smaller\n");
+
+	return 0;
+}
