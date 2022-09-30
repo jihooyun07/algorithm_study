@@ -1,0 +1,44 @@
+//문제 : http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=614&sca=30
+
+#include<stdio.h>
+
+int a[130][130],b,w;
+
+void f(int y,int x,int n)
+{
+    if(n==1)
+    {
+        if(a[y][x]==0)  w++;
+        else    b++;
+        return;
+    }
+    int i,j;
+    for(i=y;i<n+y;i++)
+    {
+        for(j=x;j<n+x;j++)
+        {
+            if(a[i][j]!=a[y][x])
+            {
+                f(y,x,n/2);
+                f(y,x+n/2,n/2);
+                f(y+n/2,x,n/2);
+                f(y+n/2,x+n/2,n/2);
+                return;
+            }
+        }
+    }
+    if(a[y][x]==0) w++;
+    else b++;
+}
+
+int main()
+{
+    int n,i,j;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            scanf("%d",&a[i][j]);
+    f(0,0,n);
+    printf("%d\n%d",w,b);
+}
+
