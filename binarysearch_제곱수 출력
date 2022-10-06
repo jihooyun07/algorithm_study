@@ -9,11 +9,11 @@ long long int pow(int a,int b)
 {
     if(b==0)    return 1;
     else if(b%2==1){
-        int x=pow(a,b-1);
+        long long int x=pow(a,b-1);
         return x*a%20091024;
     }
     else{
-        int x=pow(a,b/2);
+        long long int x=pow(a,b/2);
         return x*x%20091024;
     }
 }
