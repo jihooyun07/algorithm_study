@@ -1,0 +1,25 @@
+//문제 : http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=421&sca=3020
+
+#include<stdio.h>
+
+int h[80005],stk[80005],n,top;
+long int cnt=0;
+
+void aa()
+{
+    for(int i=0;i<n;i++)
+    {
+        while(top>0 && stk[top-1]<=h[i]) top--;
+        cnt+=top;
+        stk[top++] = h[i];
+    }
+}
+
+int main()
+{
+    int i;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)    scanf("%d",&h[i]);
+    aa();
+    printf("%ld",cnt);
+}
