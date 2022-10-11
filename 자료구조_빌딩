@@ -1,0 +1,27 @@
+//문제 : http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=607&sca=3020
+
+#include<stdio.h>
+
+int h[100005],stk1[100005],stk2[100005],ans[100005],n,top;
+
+void aa()
+{
+    for(int i=0;i<n;i++)
+    {
+        while(top>0 && stk1[top-1]<h[i]) {
+            ans[ stk2[top-1] ] = i;
+            top--;
+        }
+        stk2[top] = i;
+        stk1[top++] = h[i];
+    }
+}
+
+int main()
+{
+    int i;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)    scanf("%d",&h[i]);
+    aa();
+    for(i=0;i<n;i++)    printf("%d\n",ans[i]);
+}
