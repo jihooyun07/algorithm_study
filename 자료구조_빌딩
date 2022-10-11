@@ -9,7 +9,7 @@ void aa()
     for(int i=0;i<n;i++)
     {
         while(top>0 && stk1[top-1]<h[i]) {
-            ans[ stk2[top-1] ] = i;
+            ans[ stk2[top-1] ] = i+1;
             top--;
         }
         stk2[top] = i;
