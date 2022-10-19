@@ -1,0 +1,26 @@
+//문제 : http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=2861&sca=3050
+
+#include<stdio.h>
+
+int main()
+{
+    int x[6] = {16, 8, 4, 2, 1},y[6];
+    int cnt=0,i,j,n;
+    for(i=4;i>=0;i--)    scanf("%d",&y[i]);
+    scanf("%d",&n);
+    for(i=0;i<5;i++)
+    {
+        j=n/x[i];
+        if(j>y[i])
+        {
+            cnt+=y[i];
+            n-=y[i]*x[i];
+        }
+        else{
+            cnt+=j;
+            n-=j*x[i];
+        }
+    }
+    if(n!=0)    printf("impossible");
+    else    printf("%d",cnt);
+}
