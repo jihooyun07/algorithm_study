@@ -1,0 +1,25 @@
+//문제 : http://jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=1089&sca=3050
+
+#include<stdio.h>
+#include<algorithm>
+using namespace std;
+
+int a[205],b[205];
+
+int main()
+{
+    int m,s,c,i;
+    scanf("%d %d %d",&m,&s,&c);
+    for(i=0;i<c;i++)    scanf("%d",&a[i]);
+    sort(a+0,a+c);
+    int ans = a[c-1]-a[0]+1;
+    for(i=0;i<c-1;i++)
+    {
+        b[i] = a[i+1]-a[i]-1;
+    }
+    sort(b+0,b+c-1);
+    reverse(b+0,b+c-1);
+    for(i=0;i<m-1;i++)
+        ans-=b[i];
+    printf("%d",ans);
+}
